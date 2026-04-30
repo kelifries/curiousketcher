@@ -31,25 +31,30 @@ First time? You'll need to:
 2. Enable GitHub Pages in repo settings → Pages → Source: `gh-pages` branch
 3. Run `npm run deploy`
 
-## Set up the inquiry form (Formspree)
+## Inquiry form (Formspree)
 
-The inquiry form posts to Formspree. Until a form ID is set, submissions show a "form isn't hooked up yet — DM me on Instagram" fallback message.
+The unified inquiry form posts to Formspree (form ID `mqenzver`). It handles three inquiry types via a "What are you here for?" dropdown:
 
-To activate:
+- **Order a print** → which piece, format (digital / physical / bundle), size, shipping address
+- **Commission new work** → tier, subject, deadline, budget
+- **Not sure / something else** → free-text field
 
-1. Sign up at [formspree.io](https://formspree.io) using `keliciaongsc@gmail.com`
-2. Create a new form, copy its ID (looks like `xyzabcde`)
-3. Open `src/components/Inquiry.jsx` and replace `YOUR_FORM_ID` with that ID
-4. Run `npm run deploy`
+A hidden `_subject` field formats the email subject line per inquiry type:
+- `[Print order] from {name}`
+- `[Commission] from {name}`
+- `[General] from {name}`
 
-Formspree free tier: 50 submissions/month, file uploads supported.
+This keeps Kelicia's Formspree dashboard organized — she can filter by inquiry type at a glance.
+
+Free tier: 50 submissions/month. File uploads aren't supported on free tier (subject placeholder invites users to send reference photos via IG DM after submission).
 
 ## Update copy
 
 - Hero tagline: `src/components/Hero.jsx`
 - Artist statement: `src/components/About.jsx`
+- **Print pricing, FAQ, what's-included:** `src/components/Prints.jsx`
 - Commission tiers, add-ons, process, "What I don't do": `src/components/Commissions.jsx`
-- Inquiry form fields and Formspree ID: `src/components/Inquiry.jsx`
+- Inquiry form copy + dropdown options + subject prefixes: `src/components/Inquiry.jsx`
 - Colours / fonts: `src/styles/index.css` (`:root` block at top)
 
 ## Local development
@@ -65,5 +70,9 @@ npm run preview  # serve the production build locally
 
 - `src/App.jsx` — top-level layout, lightbox state
 - `src/lib/artwork.js` — auto-detects + sorts images from `public/artwork/` via Vite's `import.meta.glob`
-- `src/components/` — Nav, Hero, About, Portfolio (gallery grid), Commissions (tiers + add-ons + process + don't-do), Inquiry (Formspree form), Footer, Lightbox
+- `src/components/` — Nav, Hero, About, Portfolio (gallery grid), **Prints** (digital + physical pricing, what's-included, FAQ), Commissions (tiers + add-ons + process + don't-do), Inquiry (unified Formspree form with conditional fields), Footer, Lightbox
 - `src/styles/index.css` — single stylesheet, plain CSS, design tokens at top
+
+## Page section order
+
+Hero → About → Portfolio gallery → **Prints** → Commissions → Inquiry → Footer
