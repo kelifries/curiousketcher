@@ -1,21 +1,13 @@
 import { useState } from 'react'
 
-// TODO: Kelicia to sign up at formspree.io with keliciaongsc@gmail.com and replace YOUR_FORM_ID
-// Until then, the form action is unset and submissions will gracefully no-op (showing an info message).
-const FORMSPREE_ID = 'YOUR_FORM_ID'
+const FORMSPREE_ID = 'mqenzver'
 const FORMSPREE_ACTION = `https://formspree.io/f/${FORMSPREE_ID}`
-const IS_CONFIGURED = FORMSPREE_ID !== 'YOUR_FORM_ID'
 
 export default function Inquiry() {
-  const [status, setStatus] = useState('idle') // idle | submitting | success | error | not-configured
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
 
   const onSubmit = async (e) => {
     e.preventDefault()
-
-    if (!IS_CONFIGURED) {
-      setStatus('not-configured')
-      return
-    }
 
     setStatus('submitting')
     const form = e.currentTarget
@@ -52,7 +44,6 @@ export default function Inquiry() {
         className="inquiry__form"
         action={FORMSPREE_ACTION}
         method="POST"
-        encType="multipart/form-data"
         onSubmit={onSubmit}
         noValidate={false}
       >
@@ -89,34 +80,22 @@ export default function Inquiry() {
           <textarea
             className="field__textarea"
             name="subject"
-            rows={3}
-            placeholder="Who or what is the piece of? Any context that helps."
+            rows={4}
+            placeholder="Who or what is the piece of? Any context that helps. (For reference photos: send via Instagram DM after you submit, or reply to my email when I get back to you.)"
           />
         </label>
 
-        <div className="inquiry__row">
-          <label className="field">
-            <span className="field__label">Budget range</span>
-            <select className="field__select" name="budget" defaultValue="">
-              <option value="" disabled>Optional</option>
-              <option value="Under S$100">Under S$100</option>
-              <option value="S$100–200">S$100–200</option>
-              <option value="S$200–400">S$200–400</option>
-              <option value="S$400+">S$400+</option>
-              <option value="I trust your quote">I trust your quote</option>
-            </select>
-          </label>
-          <label className="field">
-            <span className="field__label">Reference photos</span>
-            <input
-              className="field__file"
-              type="file"
-              name="references"
-              accept="image/*"
-              multiple
-            />
-          </label>
-        </div>
+        <label className="field">
+          <span className="field__label">Budget range</span>
+          <select className="field__select" name="budget" defaultValue="">
+            <option value="" disabled>Optional</option>
+            <option value="Under S$100">Under S$100</option>
+            <option value="S$100–200">S$100–200</option>
+            <option value="S$200–400">S$200–400</option>
+            <option value="S$400+">S$400+</option>
+            <option value="I trust your quote">I trust your quote</option>
+          </select>
+        </label>
 
         {/* Honeypot (anti-spam) */}
         <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
@@ -145,19 +124,6 @@ export default function Inquiry() {
         {status === 'error' && (
           <div className="inquiry__error" role="alert">
             Something went wrong sending the form. Please try again, or DM me on Instagram.
-          </div>
-        )}
-        {status === 'not-configured' && (
-          <div className="inquiry__error" role="alert">
-            The form isn&rsquo;t hooked up yet. Please DM me on Instagram for now —{' '}
-            <a
-              href="https://instagram.com/curiousketcher"
-              target="_blank"
-              rel="noreferrer noopener"
-              style={{ textDecoration: 'underline' }}
-            >
-              @curiousketcher
-            </a>.
           </div>
         )}
       </form>
