@@ -1,17 +1,17 @@
 const tiers = [
   {
     name: 'Postcard Sketch',
-    price: 'S$45',
+    price: 'from S$45',
     detail: 'A6 (10×15cm). Graphite or ink. Single subject, headshot or bust crop.',
   },
   {
     name: 'Portrait Sketch',
-    price: 'S$95',
+    price: 'from S$95',
     detail: 'A5 (15×21cm). Graphite or ink. Single subject, half-body or detailed headshot.',
   },
   {
     name: 'Full Portrait',
-    price: 'S$180',
+    price: 'from S$180',
     detail: 'A4 (21×30cm). Graphite or ink. Single subject full body, or two subjects half-body.',
   },
 ]

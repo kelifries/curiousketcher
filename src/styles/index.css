@@ -351,6 +351,133 @@ code {
   color: var(--text-faint);
 }
 
+/* ----- prints ----- */
+.prints {
+  padding: clamp(72px, 11vw, 112px) 0;
+  border-top: 1px solid var(--rule);
+}
+
+.prints__pricing {
+  max-width: var(--max-w-prose);
+  margin: 0 auto clamp(36px, 5vw, 56px);
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.prints__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--text);
+}
+
+.prints__col-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+.prints__col-price {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--cta);
+  margin: 4px 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.prints__col-detail,
+.prints__col-note {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  margin: 4px 0 0;
+}
+
+.prints__col-note {
+  font-size: 13.5px;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.prints__sizes {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+
+.prints__size {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+
+.prints__size:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.prints__size-name {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.prints__size-dim {
+  color: var(--text-faint);
+  font-size: 13.5px;
+}
+
+.prints__size-price {
+  color: var(--cta);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* FAQ */
+.faq {
+  margin: 0;
+  padding: 0;
+}
+
+.faq__item {
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.faq__item:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.faq__q {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--text);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.faq__a {
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--text-soft);
+  margin: 0;
+}
+
 /* ----- commissions ----- */
 .commissions {
   padding: clamp(72px, 11vw, 112px) 0;
@@ -508,6 +635,18 @@ code {
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr;
+}
+
+.inquiry__sub-intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  margin: 8px 0 -4px;
+  letter-spacing: 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
 }
 
 @media (max-width: 600px) {
@@ -777,6 +916,11 @@ code {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+
+  .prints__pricing {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .lightbox__nav {

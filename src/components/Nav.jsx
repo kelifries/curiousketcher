@@ -16,6 +16,7 @@ export default function Nav() {
       <div className="nav__links">
         <a href="#about">About</a>
         <a href="#portfolio">Work</a>
+        <a href="#prints">Prints</a>
         <a href="#commissions">Commissions</a>
         <a href="#inquiry">Inquire</a>
       </div>

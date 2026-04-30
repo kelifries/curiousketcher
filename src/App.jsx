@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Portfolio from './components/Portfolio.jsx'
+import Prints from './components/Prints.jsx'
 import Commissions from './components/Commissions.jsx'
 import Inquiry from './components/Inquiry.jsx'
 import Footer from './components/Footer.jsx'
@@ -33,6 +34,7 @@ export default function App() {
         <Hero />
         <About />
         <Portfolio artwork={artwork} onOpen={openLightbox} />
+        <Prints />
         <Commissions />
         <Inquiry />
       </main>
