@@ -1,4 +1,4 @@
-# curious ketcher — portfolio site
+# curiousketcher — portfolio site
 
 Personal art portfolio for [@curiousketcher](https://instagram.com/curiousketcher).
 
@@ -31,11 +31,25 @@ First time? You'll need to:
 2. Enable GitHub Pages in repo settings → Pages → Source: `gh-pages` branch
 3. Run `npm run deploy`
 
+## Set up the inquiry form (Formspree)
+
+The inquiry form posts to Formspree. Until a form ID is set, submissions show a "form isn't hooked up yet — DM me on Instagram" fallback message.
+
+To activate:
+
+1. Sign up at [formspree.io](https://formspree.io) using `keliciaongsc@gmail.com`
+2. Create a new form, copy its ID (looks like `xyzabcde`)
+3. Open `src/components/Inquiry.jsx` and replace `YOUR_FORM_ID` with that ID
+4. Run `npm run deploy`
+
+Formspree free tier: 50 submissions/month, file uploads supported.
+
 ## Update copy
 
-- Hero tagline / artist statement: `src/components/Hero.jsx`
-- Commission tiers and pricing: `src/components/Commissions.jsx` (`tiers` array near the top)
-- Inquiry email address: `src/components/Commissions.jsx` (`mailto` line — currently `hello@curiousketcher.com`, update to a real address)
+- Hero tagline: `src/components/Hero.jsx`
+- Artist statement: `src/components/About.jsx`
+- Commission tiers, add-ons, process, "What I don't do": `src/components/Commissions.jsx`
+- Inquiry form fields and Formspree ID: `src/components/Inquiry.jsx`
 - Colours / fonts: `src/styles/index.css` (`:root` block at top)
 
 ## Local development
@@ -51,5 +65,5 @@ npm run preview  # serve the production build locally
 
 - `src/App.jsx` — top-level layout, lightbox state
 - `src/lib/artwork.js` — auto-detects + sorts images from `public/artwork/` via Vite's `import.meta.glob`
-- `src/components/` — Nav, Hero, Portfolio (gallery grid), Commissions, Footer, Lightbox
+- `src/components/` — Nav, Hero, About, Portfolio (gallery grid), Commissions (tiers + add-ons + process + don't-do), Inquiry (Formspree form), Footer, Lightbox
 - `src/styles/index.css` — single stylesheet, plain CSS, design tokens at top

@@ -12,11 +12,12 @@ export default function Nav() {
 
   return (
     <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`} aria-label="Primary">
-      <a href="#top" className="nav__brand">curious ketcher</a>
+      <a href="#top" className="nav__brand">curiousketcher</a>
       <div className="nav__links">
-        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Work</a>
         <a href="#commissions">Commissions</a>
-        <a href="https://instagram.com/curiousketcher" target="_blank" rel="noreferrer noopener" className="nav__ig">Instagram <span aria-hidden="true">↗</span></a>
+        <a href="#inquiry">Inquire</a>
       </div>
     </nav>
   )

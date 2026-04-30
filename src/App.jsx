@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import Hero from './components/Hero.jsx'
+import About from './components/About.jsx'
 import Portfolio from './components/Portfolio.jsx'
 import Commissions from './components/Commissions.jsx'
+import Inquiry from './components/Inquiry.jsx'
 import Footer from './components/Footer.jsx'
 import Nav from './components/Nav.jsx'
 import Lightbox from './components/Lightbox.jsx'
@@ -29,8 +31,10 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
+        <About />
         <Portfolio artwork={artwork} onOpen={openLightbox} />
         <Commissions />
+        <Inquiry />
       </main>
       <Footer />
       {activeIndex !== null && artwork[activeIndex] && (
