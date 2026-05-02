@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
 import Portfolio from './components/Portfolio.jsx'
-import Prints from './components/Prints.jsx'
-import Commissions from './components/Commissions.jsx'
+import TakeHome from './components/TakeHome.jsx'
 import Inquiry from './components/Inquiry.jsx'
+import MiniAbout from './components/MiniAbout.jsx'
+import Faq from './components/Faq.jsx'
 import Footer from './components/Footer.jsx'
 import Nav from './components/Nav.jsx'
 import Lightbox from './components/Lightbox.jsx'
@@ -32,11 +32,11 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <About />
         <Portfolio artwork={artwork} onOpen={openLightbox} />
-        <Prints />
-        <Commissions />
+        <TakeHome />
         <Inquiry />
+        <MiniAbout />
+        <Faq />
       </main>
       <Footer />
       {activeIndex !== null && artwork[activeIndex] && (

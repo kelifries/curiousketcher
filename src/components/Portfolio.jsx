@@ -1,9 +1,8 @@
 export default function Portfolio({ artwork, onOpen }) {
   return (
     <section className="portfolio" id="portfolio">
-      <header className="section-head">
-        <p className="section-head__eyebrow">Portfolio</p>
-        <h2 className="section-head__title">Selected work</h2>
+      <header className="section-head section-head--center">
+        <h2 className="section-head__title">artwork</h2>
       </header>
 
       {artwork.length === 0 ? (

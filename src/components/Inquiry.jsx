@@ -6,12 +6,14 @@ const FORMSPREE_ACTION = `https://formspree.io/f/${FORMSPREE_ID}`
 const INQUIRY_TYPES = {
   PRINT: 'Order a print',
   COMMISSION: 'Commission new work',
+  TATTOO: 'Tattoo template',
   OTHER: 'Not sure / something else',
 }
 
 const SUBJECT_PREFIX = {
   [INQUIRY_TYPES.PRINT]: '[Print order]',
   [INQUIRY_TYPES.COMMISSION]: '[Commission]',
+  [INQUIRY_TYPES.TATTOO]: '[Tattoo template]',
   [INQUIRY_TYPES.OTHER]: '[General]',
 }
 
@@ -102,6 +104,7 @@ export default function Inquiry() {
             <option value="" disabled>Pick one</option>
             <option value={INQUIRY_TYPES.PRINT}>Order a print</option>
             <option value={INQUIRY_TYPES.COMMISSION}>Commission new work</option>
+            <option value={INQUIRY_TYPES.TATTOO}>Tattoo template</option>
             <option value={INQUIRY_TYPES.OTHER}>Not sure / something else</option>
           </select>
         </label>
@@ -173,29 +176,12 @@ export default function Inquiry() {
           </>
         )}
 
-        {/* ===== Conditional: COMMISSION ===== */}
+        {/* ===== Conditional: COMMISSION (slimmed for v6 — only A5 sketch) ===== */}
         {inquiryType === INQUIRY_TYPES.COMMISSION && (
           <>
             <p className="inquiry__sub-intro">
-              Quick details below — the more you tell me, the faster I can quote.
+              A5 sketch (S$95). Tell me what you have in mind.
             </p>
-
-            <div className="inquiry__row">
-              <label className="field">
-                <span className="field__label">Type of piece</span>
-                <select className="field__select" name="commission_type" defaultValue="">
-                  <option value="" disabled>Select a tier</option>
-                  <option value="Postcard Sketch (from S$45)">Postcard Sketch — from S$45</option>
-                  <option value="Portrait Sketch (from S$95)">Portrait Sketch — from S$95</option>
-                  <option value="Full Portrait (from S$180)">Full Portrait — from S$180</option>
-                  <option value="Not sure">Not sure</option>
-                </select>
-              </label>
-              <label className="field">
-                <span className="field__label">Deadline</span>
-                <input className="field__input" type="date" name="commission_deadline" />
-              </label>
-            </div>
 
             <label className="field">
               <span className="field__label">Subject</span>
@@ -207,17 +193,71 @@ export default function Inquiry() {
               />
             </label>
 
-            <label className="field">
-              <span className="field__label">Budget range</span>
-              <select className="field__select" name="commission_budget" defaultValue="">
-                <option value="" disabled>Optional</option>
-                <option value="Under S$100">Under S$100</option>
-                <option value="S$100–200">S$100–200</option>
-                <option value="S$200–400">S$200–400</option>
-                <option value="S$400+">S$400+</option>
-                <option value="I trust your quote">I trust your quote</option>
-              </select>
+            <div className="inquiry__row">
+              <label className="field">
+                <span className="field__label">Deadline</span>
+                <input className="field__input" type="date" name="commission_deadline" />
+              </label>
+              <label className="field">
+                <span className="field__label">Budget range</span>
+                <select className="field__select" name="commission_budget" defaultValue="">
+                  <option value="" disabled>Optional</option>
+                  <option value="Under S$100">Under S$100</option>
+                  <option value="S$100–200">S$100–200</option>
+                  <option value="S$200–400">S$200–400</option>
+                  <option value="S$400+">S$400+</option>
+                  <option value="I trust your quote">I trust your quote</option>
+                </select>
+              </label>
+            </div>
+
+            <label className="field field--checkbox">
+              <input
+                className="field__checkbox"
+                type="checkbox"
+                name="commission_frame"
+                value="Yes"
+              />
+              <span className="field__checkbox-label">Add a frame (+S$10)</span>
             </label>
+          </>
+        )}
+
+        {/* ===== Conditional: TATTOO TEMPLATE ===== */}
+        {inquiryType === INQUIRY_TYPES.TATTOO && (
+          <>
+            <p className="inquiry__sub-intro">
+              S$80, delivered as a high-res PNG you can hand to your tattoo artist.
+            </p>
+
+            <label className="field">
+              <span className="field__label field__label--required">Subject / idea</span>
+              <textarea
+                className="field__textarea"
+                name="tattoo_subject"
+                rows={5}
+                required
+                placeholder="Describe what you'd like — subject, style, placement on body, intended size. Reference photos can be sent via Instagram DM after submitting."
+              />
+            </label>
+
+            <div className="inquiry__row">
+              <label className="field">
+                <span className="field__label">Deadline</span>
+                <input className="field__input" type="date" name="tattoo_deadline" />
+              </label>
+              <label className="field">
+                <span className="field__label">Budget range</span>
+                <select className="field__select" name="tattoo_budget" defaultValue="">
+                  <option value="" disabled>Optional</option>
+                  <option value="Under S$100">Under S$100</option>
+                  <option value="S$100–200">S$100–200</option>
+                  <option value="S$200–400">S$200–400</option>
+                  <option value="S$400+">S$400+</option>
+                  <option value="I trust your quote">I trust your quote</option>
+                </select>
+              </label>
+            </div>
           </>
         )}
 

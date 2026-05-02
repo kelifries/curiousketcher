@@ -14,11 +14,10 @@ export default function Nav() {
     <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`} aria-label="Primary">
       <a href="#top" className="nav__brand">curiousketcher</a>
       <div className="nav__links">
-        <a href="#about">About</a>
-        <a href="#portfolio">Work</a>
-        <a href="#prints">Prints</a>
-        <a href="#commissions">Commissions</a>
+        <a href="#portfolio">Artwork</a>
+        <a href="#takehome">Take home</a>
         <a href="#inquiry">Inquire</a>
+        <a href="#faq">FAQ</a>
       </div>
     </nav>
   )
