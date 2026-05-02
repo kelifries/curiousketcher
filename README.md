@@ -33,15 +33,17 @@ First time? You'll need to:
 
 ## Inquiry form (Formspree)
 
-The unified inquiry form posts to Formspree (form ID `mqenzver`). It handles three inquiry types via a "What are you here for?" dropdown:
+The unified inquiry form posts to Formspree (form ID `mqenzver`). It handles four inquiry types via a "What are you here for?" dropdown:
 
 - **Order a print** → which piece, format (digital / physical / bundle), size, shipping address
-- **Commission new work** → tier, subject, deadline, budget
+- **Commission new work** → subject, deadline, budget, optional "Add a frame (+S$10)" checkbox
+- **Tattoo template** → subject/idea (incl. style/placement/size), deadline, budget
 - **Not sure / something else** → free-text field
 
 A hidden `_subject` field formats the email subject line per inquiry type:
 - `[Print order] from {name}`
 - `[Commission] from {name}`
+- `[Tattoo template] from {name}`
 - `[General] from {name}`
 
 This keeps Kelicia's Formspree dashboard organized — she can filter by inquiry type at a glance.
@@ -51,9 +53,9 @@ Free tier: 50 submissions/month. File uploads aren't supported on free tier (sub
 ## Update copy
 
 - Hero tagline: `src/components/Hero.jsx`
-- Artist statement: `src/components/About.jsx`
-- **Print pricing, FAQ, what's-included:** `src/components/Prints.jsx`
-- Commission tiers, add-ons, process, "What I don't do": `src/components/Commissions.jsx`
+- Mini-about line: `src/components/MiniAbout.jsx`
+- **Take-home offerings (prints + sketch + tattoo template pricing):** `src/components/TakeHome.jsx`
+- FAQ entries: `src/components/Faq.jsx` (`faqs` array — add objects to extend)
 - Inquiry form copy + dropdown options + subject prefixes: `src/components/Inquiry.jsx`
 - Colours / fonts: `src/styles/index.css` (`:root` block at top)
 
@@ -70,9 +72,9 @@ npm run preview  # serve the production build locally
 
 - `src/App.jsx` — top-level layout, lightbox state
 - `src/lib/artwork.js` — auto-detects + sorts images from `public/artwork/` via Vite's `import.meta.glob`
-- `src/components/` — Nav, Hero, About, Portfolio (gallery grid), **Prints** (digital + physical pricing, what's-included, FAQ), Commissions (tiers + add-ons + process + don't-do), Inquiry (unified Formspree form with conditional fields), Footer, Lightbox
+- `src/components/` — Nav, Hero, Portfolio (artwork gallery), TakeHome (3 lean offering blocks), Inquiry (unified Formspree form with conditional fields), MiniAbout (single italic line), Faq (single Q&A, easy to extend), Footer, Lightbox
 - `src/styles/index.css` — single stylesheet, plain CSS, design tokens at top
 
 ## Page section order
 
-Hero → About → Portfolio gallery → **Prints** → Commissions → Inquiry → Footer
+Hero → Artwork → Take home a piece → Inquiry → About → FAQ → Footer
