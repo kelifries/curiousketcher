@@ -17,7 +17,6 @@ export default function Nav() {
         <a href="#portfolio">Artwork</a>
         <a href="#takehome">Take home</a>
         <a href="#inquiry">Inquire</a>
-        <a href="#faq">FAQ</a>
       </div>
     </nav>
   )

@@ -17,6 +17,14 @@ Drop image files into `public/artwork/`. Filename controls sort order and title:
 
 No code changes needed — the gallery auto-detects everything in the folder at build time.
 
+## Add a hero photo
+
+Drop a single file at `public/photo.jpg` (or `.jpeg`, `.png`, `.webp`). The Hero section auto-detects it at build time and renders it side-by-side with the name + tagline on desktop, stacked below on mobile.
+
+If no photo file exists, the photo column is hidden entirely — the hero just shows name + tagline with no visual stub. So this is fully optional.
+
+Recommended: square or near-square crop, long edge ~1200–1600px, optimized JPG/WebP. The image is rendered with `object-fit: cover` and `aspect-ratio: 1 / 1` on desktop (4 / 5 on mobile).
+
 ## Deploy updates
 
 ```sh
@@ -52,10 +60,9 @@ Free tier: 50 submissions/month. File uploads aren't supported on free tier (sub
 
 ## Update copy
 
-- Hero tagline: `src/components/Hero.jsx`
-- Mini-about line: `src/components/MiniAbout.jsx`
+- Hero name + tagline: `src/components/Hero.jsx`
+- Hero photo (auto-detect from `public/photo.{jpg,jpeg,png,webp}`): `src/lib/heroPhoto.js`
 - **Take-home offerings (prints + sketch + tattoo template pricing):** `src/components/TakeHome.jsx`
-- FAQ entries: `src/components/Faq.jsx` (`faqs` array — add objects to extend)
 - Inquiry form copy + dropdown options + subject prefixes: `src/components/Inquiry.jsx`
 - Colours / fonts: `src/styles/index.css` (`:root` block at top)
 
@@ -72,9 +79,10 @@ npm run preview  # serve the production build locally
 
 - `src/App.jsx` — top-level layout, lightbox state
 - `src/lib/artwork.js` — auto-detects + sorts images from `public/artwork/` via Vite's `import.meta.glob`
-- `src/components/` — Nav, Hero, Portfolio (artwork gallery), TakeHome (3 lean offering blocks), Inquiry (unified Formspree form with conditional fields), MiniAbout (single italic line), Faq (single Q&A, easy to extend), Footer, Lightbox
+- `src/lib/heroPhoto.js` — auto-detects a single hero photo from `public/photo.{jpg,jpeg,png,webp}` (returns null if not present)
+- `src/components/` — Nav, Hero (name + tagline + optional auto-detected photo), Portfolio (artwork gallery), TakeHome (3 lean offering blocks), Inquiry (unified Formspree form with conditional fields), Footer, Lightbox
 - `src/styles/index.css` — single stylesheet, plain CSS, design tokens at top
 
 ## Page section order
 
-Hero → Artwork → Take home a piece → Inquiry → About → FAQ → Footer
+Hero → Artwork → Take home a piece → Inquiry → Footer

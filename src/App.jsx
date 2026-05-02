@@ -3,8 +3,6 @@ import Hero from './components/Hero.jsx'
 import Portfolio from './components/Portfolio.jsx'
 import TakeHome from './components/TakeHome.jsx'
 import Inquiry from './components/Inquiry.jsx'
-import MiniAbout from './components/MiniAbout.jsx'
-import Faq from './components/Faq.jsx'
 import Footer from './components/Footer.jsx'
 import Nav from './components/Nav.jsx'
 import Lightbox from './components/Lightbox.jsx'
@@ -35,8 +33,6 @@ export default function App() {
         <Portfolio artwork={artwork} onOpen={openLightbox} />
         <TakeHome />
         <Inquiry />
-        <MiniAbout />
-        <Faq />
       </main>
       <Footer />
       {activeIndex !== null && artwork[activeIndex] && (
